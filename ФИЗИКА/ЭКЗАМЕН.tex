@@ -1,4 +1,3 @@
-
 \documentclass[a4paper,12pt]{article}
 
 \usepackage[utf8]{inputenc}
@@ -6,11 +5,34 @@
 \usepackage[russian]{babel}
 \usepackage{amsmath, amssymb}
 \usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+
 \geometry{margin=2cm}
+
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{definitionbox}{
+colback=white,
+colframe=green!60!black,
+boxrule=0pt,
+leftrule=3pt,
+rightrule=0pt,
+toprule=0pt,
+bottomrule=0pt,
+left=6pt,
+right=0pt,
+top=3pt,
+bottom=3pt
+}
 
 \begin{document}
 
+\tableofcontents
+
 \section{Кинематика основ механики}
+
+\subsection*{1. Радиус-вектор, перемещение, скорость, ускорение материальной точки и связь между ними}
 
 \subsection*{План}
 \begin{itemize}
@@ -21,14 +43,14 @@
 \item Разложить ускорение на касательную и нормальную составляющие
 \item Вывести формулы через производную единичного касательного вектора
 \end{itemize}
+    
+\begin{definitionbox}
+\textbf{Радиус-вектор} — вектор, задающий положение точки относительно начала координат.
+\end{definitionbox}
 
-\subsection*{1. Радиус-вектор, перемещение, скорость, ускорение материальной точки и связь между ними}
-
-\begin{itemize}
-\item Радиус-вектор — вектор, задающий положение точки отн. начала координат.
-\end{itemize}
-
-Вектор перемещения $\Delta \vec R$ за интервал $(t_1, t_2)$ — вектор, соединяющий начальное и конечное положение точки.
+\begin{definitionbox}
+\textbf{Вектор перемещения} $\Delta \vec R$ за интервал $(t_1, t_2)$ — вектор, соединяющий начальное и конечное положение точки.
+\end{definitionbox}
 
 \[
 \Delta \vec R
@@ -46,14 +68,12 @@
 \sqrt{(\Delta x)^2 + (\Delta y)^2 + (\Delta z)^2}
 \]
 
-\begin{itemize}
-\item Мгновенная скорость $\vec v$ — вектор = пределу скорости перемещения при стремлении $\Delta t \to 0$
-\end{itemize}
+\begin{definitionbox}
+\textbf{Мгновенная скорость} $\vec v$ — предел средней скорости при $\Delta t \to 0$.
+\end{definitionbox}
 
 \[
 \vec v
-=
-\lim_{\Delta t \to 0} \vec v_{\text{ср}}
 =
 \lim_{\Delta t \to 0}
 \frac{\Delta \vec R}{\Delta t}
@@ -65,9 +85,9 @@
 \vec R'(t)
 \]
 
-\begin{itemize}
-\item Мгновенное ускорение $\vec a$ — вектор = мгновенному изменению вектора скорости
-\end{itemize}
+\begin{definitionbox}
+\textbf{Мгновенное ускорение} $\vec a$ — предел изменения скорости при $\Delta t \to 0$.
+\end{definitionbox}
 
 \[
 \vec a
@@ -90,17 +110,15 @@
 \vec a_n
 \]
 
-\[
-\vec a_{\tau}
-\text{ — тангенциальное (касательное) ускорение}
-\]
+\begin{definitionbox}
+$\vec a_{\tau}$ — тангенциальное (касательное) ускорение.
+\end{definitionbox}
 
-\[
-\vec a_n
-\text{ — нормальное ускорение}
-\]
+\begin{definitionbox}
+$\vec a_n$ — нормальное ускорение.
+\end{definitionbox}
 
-Введём единичный вектор
+Введём единичный вектор:
 
 \[
 \vec \tau_v
@@ -113,36 +131,249 @@
 \[
 \vec v
 =
-\vec \tau_v
-|\vec v|
+\vec \tau_v |\vec v|
 \]
 
-Найдём вектор ускорения:
+Найдём ускорение:
 
 \[
 \vec a
 =
-\frac{d \vec v}{dt}
+\frac{d\vec v}{dt}
 =
-\frac{d}{dt}
-\left(
-\vec \tau_v
-|\vec v|
-\right)
+\frac{d}{dt}\left(\vec \tau_v |\vec v|\right)
 \]
 
 \[
 \vec a
 =
-\frac{d \vec \tau_v}{dt}
-|\vec v|
+\frac{d\vec \tau_v}{dt} |\vec v|
 +
-\vec \tau_v
-\frac{d |\vec v|}{dt}
+\vec \tau_v \frac{d|\vec v|}{dt}
 \]
 
 часть вдоль скорости $\rightarrow a_{\tau}$
 
 часть перпендикулярно скорости $\rightarrow a_n$
+
+\subsection*{2. Линейная скорость и ускорение твёрдого тела при вращательном движении. Связь угла поворота, угловой скорости и углового ускорения. Связь угловой скорости с линейной. Все аналитические выражения необходимо вывести}
+
+\textbf{План}
+\begin{itemize}
+\item Ввести угловую скорость
+\item Ввести угловое ускорение
+\item Найти связь линейной скорости с угловой
+\item Найти ускорение при вращении
+\item Разложить ускорение на касательную и нормальную составляющие
+\item Связь угловых величин с периодом и частотой
+\item Связь линейных и угловых величин
+\end{itemize}
+
+\begin{definitionbox}
+\textbf{Угловая скорость} $\vec \omega$ — векторная величина, характеризующая скорость изменения угла поворота тела.  (направлена вдоль оси вращения)
+\end{definitionbox}
+
+\[
+\vec \omega
+=
+\frac{d\vec \varphi}{dt}
+=
+\dot{\varphi}
+\]
+
+\[
+[\omega] = \text{рад/с}
+\]
+
+\begin{definitionbox}
+\textbf{Угловое ускорение} $\vec \varepsilon$ — векторная величина, характеризующая скорость изменения угловой скорости.
+\end{definitionbox}
+
+\[
+\vec \varepsilon
+=
+\frac{d\vec \omega}{dt}
+=
+\dot{\omega}
+=
+\ddot{\varphi}
+\]
+
+\[
+[\varepsilon] = \text{рад/с}^2
+\]
+
+Рассмотрим радиус-вектор точки:
+
+\[
+\vec r
+=
+\vec r_\parallel + \vec r_\perp
+\]
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{trajectory.png}
+\caption{Направления скоростей}
+\end{figure}
+
+Линейная скорость точки вращающегося тела:
+
+\[
+\vec v
+=
+[\vec \omega, \vec r]
+\]
+
+\[
+\vec v
+=
+[\vec \omega, \vec r_\parallel + \vec r_\perp]
+=
+[\vec \omega, \vec r_\parallel]
++
+[\vec \omega, \vec r_\perp]
+\]
+
+Так как
+
+\[
+\sin(\vec \omega, \vec r_\parallel)=0; 
+ \sin(\vec \omega, \vec r_\perp)=1
+\]
+
+то
+
+\[
+\vec v
+=
+[\vec \omega, \vec r_\perp]
+\]
+
+Модуль линейной скорости:
+
+\[
+v
+=
+\omega r_\perp
+\]
+
+Найдём ускорение:
+
+\[
+\vec a
+=
+\frac{d\vec v}{dt}
+=
+\frac{d}{dt}[\vec \omega, \vec r_\perp]
+\]
+
+\[
+\vec a
+=
+[\dot \vec \omega, \vec r_\perp]
++
+[\vec \omega, \dot \vec r_\perp']
+\]
+
+\[
+\vec a
+=
+\underbrace{[\vec \varepsilon, \vec r_\perp]}_{\text{тангенциальное}}
++
+\underbrace{[\vec \omega, \vec v]}_{\text{нормальное}}
+\]
+Так как
+
+\[
+v = \omega r_\perp
+\]
+
+получаем нормальное ускорение:
+
+\[
+a_n
+=
+\omega^2 r_\perp
+=
+\frac{v^2}{r_\perp}
+\]
+
+\begin{definitionbox}
+\textbf{Касательное ускорение} $\vec a_\tau$ — составляющая ускорения, направленная вдоль скорости.
+\end{definitionbox}
+
+\[
+\vec a_\tau
+=
+[\vec \varepsilon, \vec r_\perp]
+\]
+
+\begin{definitionbox}
+\textbf{Нормальное ускорение} $\vec a_n$ — составляющая ускорения, направленная к центру вращения.
+\end{definitionbox}
+
+\[
+\vec a_n
+=
+[\vec \omega, \vec v]
+\]
+
+Полное ускорение:
+
+\[
+\vec a
+=
+\vec a_\tau
++
+\vec a_n
+\]
+
+\begin{definitionbox}
+    \textbf{Период} $T$ — время, за которое тело совершает один полный оборот.
+\end{definitionbox}
+
+
+\[
+T
+=
+\frac{2\pi}{\omega}
+\]
+
+\[
+\omega
+=
+\frac{2\pi}{T}
+\]
+
+
+\begin{definitionbox}
+    \textbf{Частота} $\nu$ — физическая величина, равная числу полных оборотов за единицу времени.
+\end{definitionbox}
+\[
+\nu
+=
+\frac{1}{T}
+\]
+
+\[
+{\omega}
+=
+2\pi \nu
+\]
+
+Связь линейных и угловых величин:
+
+\[
+v \rightarrow \omega
+\]
+
+\[
+a \rightarrow \varepsilon
+\]
+
+\[
+R \rightarrow \varphi
+\]
 
 \end{document}

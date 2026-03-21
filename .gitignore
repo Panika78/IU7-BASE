@@ -1,0 +1,66 @@
+# Auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.xdv
+
+# Bibliography
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+
+# Index files
+*.idx
+*.ilg
+*.ind
+
+# Glossaries
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+
+# Latexmk
+latexmkrc
+*.latexmk
+
+# TikZ
+*.tikz
+*.pgf
+*.pgf-plot.gnuplot
+*.pgf-plot.table
+
+# minted
+_minted*
+*.pyg
+
+# Temporary files
+*.tmp
+*.bak
+*.sav
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Build directories
+build/
+out/
+dist/
