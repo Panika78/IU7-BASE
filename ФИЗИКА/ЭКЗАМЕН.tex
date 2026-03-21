@@ -1,0 +1,148 @@
+
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=2cm}
+
+\begin{document}
+
+\section{Кинематика основ механики}
+
+\subsection*{План}
+\begin{itemize}
+\item Дать определение радиус-вектора
+\item Ввести перемещение и его модуль
+\item Получить выражение мгновенной скорости как производной радиус-вектора
+\item Получить выражение ускорения как производной скорости
+\item Разложить ускорение на касательную и нормальную составляющие
+\item Вывести формулы через производную единичного касательного вектора
+\end{itemize}
+
+\subsection*{1. Радиус-вектор, перемещение, скорость, ускорение материальной точки и связь между ними}
+
+\begin{itemize}
+\item Радиус-вектор — вектор, задающий положение точки отн. начала координат.
+\end{itemize}
+
+Вектор перемещения $\Delta \vec R$ за интервал $(t_1, t_2)$ — вектор, соединяющий начальное и конечное положение точки.
+
+\[
+\Delta \vec R
+=
+\vec R(t_2)
+-
+\vec R(t_1)
+=
+(x_2-x_1,\; y_2-y_1,\; z_2-z_1)
+\]
+
+\[
+|\Delta \vec R|
+=
+\sqrt{(\Delta x)^2 + (\Delta y)^2 + (\Delta z)^2}
+\]
+
+\begin{itemize}
+\item Мгновенная скорость $\vec v$ — вектор = пределу скорости перемещения при стремлении $\Delta t \to 0$
+\end{itemize}
+
+\[
+\vec v
+=
+\lim_{\Delta t \to 0} \vec v_{\text{ср}}
+=
+\lim_{\Delta t \to 0}
+\frac{\Delta \vec R}{\Delta t}
+\]
+
+\[
+\vec v
+=
+\vec R'(t)
+\]
+
+\begin{itemize}
+\item Мгновенное ускорение $\vec a$ — вектор = мгновенному изменению вектора скорости
+\end{itemize}
+
+\[
+\vec a
+=
+\lim_{\Delta t \to 0}
+\frac{\Delta \vec v}{\Delta t}
+=
+\vec v'(t)
+=
+\vec R''(t)
+\]
+
+Вектор ускорения можно разложить на две составляющие:
+
+\[
+\vec a
+=
+\vec a_{\tau}
++
+\vec a_n
+\]
+
+\[
+\vec a_{\tau}
+\text{ — тангенциальное (касательное) ускорение}
+\]
+
+\[
+\vec a_n
+\text{ — нормальное ускорение}
+\]
+
+Введём единичный вектор
+
+\[
+\vec \tau_v
+=
+\frac{\vec v}{|\vec v|}
+\]
+
+Тогда
+
+\[
+\vec v
+=
+\vec \tau_v
+|\vec v|
+\]
+
+Найдём вектор ускорения:
+
+\[
+\vec a
+=
+\frac{d \vec v}{dt}
+=
+\frac{d}{dt}
+\left(
+\vec \tau_v
+|\vec v|
+\right)
+\]
+
+\[
+\vec a
+=
+\frac{d \vec \tau_v}{dt}
+|\vec v|
++
+\vec \tau_v
+\frac{d |\vec v|}{dt}
+\]
+
+часть вдоль скорости $\rightarrow a_{\tau}$
+
+часть перпендикулярно скорости $\rightarrow a_n$
+
+\end{document}
