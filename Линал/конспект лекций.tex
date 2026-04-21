@@ -1,0 +1,212 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{cmap}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+
+\geometry{margin=2cm}
+\setlength{\headheight}{17pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{ЛАФНП. ЭКЗАМЕН. 2-й СЕМЕСТР}
+\fancyhead[R]{Артём Ким ИУ7-22Б}
+\fancyfoot[C]{\thepage}
+
+\newtcolorbox{definitionbox}{
+colback=white,
+colframe=green!60!black,
+boxrule=0pt,
+leftrule=3pt,
+rightrule=0pt,
+toprule=0pt,
+bottomrule=0pt,
+left=6pt,
+right=0pt,
+top=3pt,
+bottom=3pt
+}
+
+\newtcolorbox{theorembox}{
+colback=white,
+colframe=red!70!pink,
+boxrule=0pt,
+leftrule=3pt,
+rightrule=0pt,
+toprule=0pt,
+bottomrule=0pt,
+left=6pt,
+right=0pt,
+top=3pt,
+bottom=3pt
+}
+
+\newtcolorbox{notebox}{
+colback=white,
+colframe=blue!65!cyan,
+boxrule=0pt,
+leftrule=3pt,
+rightrule=0pt,
+toprule=0pt,
+bottomrule=0pt,
+left=6pt,
+right=0pt,
+top=3pt,
+bottom=3pt
+}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\begin{titlepage}
+    \begin{center}
+        \large Московский государственный технический университет\\
+        имени Н.\,Э. Баумана\\[1cm]
+
+        \textbf{2-й семестр}\\[5cm]
+
+        {\LARGE \textbf{КОНСПЕКТ}}\\[0.5cm]
+        {\Large лекций}\\[2cm]
+
+        {\large по дисциплине:}\\[0.3cm]
+        {\Large \textbf{Линейная алгебра и функции нескольких переменных}}\\[3cm]
+    \end{center}
+
+    \vfill
+
+    \begin{center}
+        2026
+    \end{center}
+\end{titlepage}
+
+\clearpage
+\pagenumbering{arabic}
+
+\tableofcontents
+\newpage
+
+\section{Функции многих переменных. Предел и непрерывность}
+
+\subsection*{Функции многих переменных}
+
+Рассмотрим отображение
+
+\[
+f\colon D \subset \mathbb{R}^n \to \mathbb{R}
+\]
+
+\begin{definitionbox}
+Функцией многих переменных называется отображение, которое каждой точке
+$x = (x_1, x_2, \dots, x_n) \in D \subset \mathbb{R}^n$
+ставит в соответствие единственное число
+$f(x_1, x_2, \dots, x_n) \in \mathbb{R}$.
+\end{definitionbox}
+
+Множество $D$ называется областью определения функции.
+
+Геометрически функция двух переменных задаёт поверхность:
+
+\[
+z = f(x,y)
+\]
+
+\subsection*{Окрестность точки}
+
+\begin{definitionbox}
+Окрестностью точки $a \in \mathbb{R}^n$ называется множество точек, расстояние от которых до точки $a$ меньше некоторого числа $\varepsilon > 0$:
+\end{definitionbox}
+
+\[
+U_\varepsilon(a) =
+\{x \in \mathbb{R}^n \mid |x-a| < \varepsilon\}
+\]
+
+\subsection*{Предел функции многих переменных}
+
+\begin{definitionbox}
+Число $A$ называется пределом функции $f(x)$ при $x \to a$, если
+\end{definitionbox}
+
+\[
+\forall \varepsilon > 0 \;
+\exists \delta > 0\colon
+0 < |x-a| < \delta
+\Rightarrow
+|f(x)-A| < \varepsilon
+\]
+
+Обозначение:
+
+\[
+\lim_{x \to a} f(x) = A
+\]
+
+\subsection*{Непрерывность функции}
+
+\begin{definitionbox}
+Функция $f$ называется непрерывной в точке $a$, если
+\end{definitionbox}
+
+\[
+\lim_{x \to a} f(x) = f(a)
+\]
+
+То есть
+
+\[
+\forall \varepsilon > 0\;
+\exists \delta > 0\colon
+|x-a| < \delta
+\Rightarrow
+|f(x)-f(a)| < \varepsilon
+\]
+
+\subsection*{Последовательностный критерий предела}
+
+\begin{theorembox}
+\[
+\lim_{x \to a} f(x) = A
+\]
+
+тогда и только тогда, когда для любой последовательности
+
+\[
+x_k \to a,
+\qquad x_k \ne a
+\]
+
+выполняется
+
+\[
+f(x_k) \to A
+\]
+\end{theorembox}
+
+\subsection*{Пример функции}
+
+\[
+f(x,y) = \sqrt{x^2 + y^2}
+\]
+
+Область определения:
+
+\[
+D = \mathbb{R}^2
+\]
+
+\subsection*{Пример предела}
+
+\[
+\lim\limits_{(x,y)\to(0,0)} \sqrt{x^2 + y^2} = 0
+\]
+
+\end{document}
