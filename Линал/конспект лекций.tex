@@ -93,120 +93,1494 @@ bottom=3pt
 
 \tableofcontents
 \newpage
+\section{Лекция 10. Функции нескольких переменных. Линии уровня}
 
-\section{Функции многих переменных. Предел и непрерывность}
+вторник, 14 апреля 2026 г.
 
-\subsection*{Функции многих переменных}
+\subsection*{Функции нескольких переменных. Линии уровня}
 
-Рассмотрим отображение
+Рассмотрим функцию двух переменных:
 
 \[
-f\colon D \subset \mathbb{R}^n \to \mathbb{R}
+f(x,y)
+=
+\frac{1}{\sqrt{25-x^2-y^2}}.
+\]
+
+Область определения функции задаётся условием:
+
+\[
+25-x^2-y^2>0,
+\]
+
+то есть
+
+\[
+x^2+y^2<25.
+\]
+
+Следовательно,
+
+\[
+D(f)=\{(x,y)\mid x^2+y^2<25\}.
 \]
 
 \begin{definitionbox}
-Функцией многих переменных называется отображение, которое каждой точке
-$x = (x_1, x_2, \dots, x_n) \in D \subset \mathbb{R}^n$
-ставит в соответствие единственное число
-$f(x_1, x_2, \dots, x_n) \in \mathbb{R}$.
+\textbf{Линией уровня} функции $f(x,y)$ называется \textit{множество точек плоскости}, в которых функция принимает одно и то же значение:
+\[
+f(x,y)=c.
+\]
 \end{definitionbox}
 
-Множество $D$ называется областью определения функции.
-
-Геометрически функция двух переменных задаёт поверхность:
+Для данной функции:
 
 \[
-z = f(x,y)
+\frac{1}{\sqrt{25-x^2-y^2}}=c.
 \]
 
-\subsection*{Окрестность точки}
-
-\begin{definitionbox}
-Окрестностью точки $a \in \mathbb{R}^n$ называется множество точек, расстояние от которых до точки $a$ меньше некоторого числа $\varepsilon > 0$:
-\end{definitionbox}
+Так как левая часть положительна, то
 
 \[
-U_\varepsilon(a) =
-\{x \in \mathbb{R}^n \mid |x-a| < \varepsilon\}
+c>0.
 \]
 
-\subsection*{Предел функции многих переменных}
-
-\begin{definitionbox}
-Число $A$ называется пределом функции $f(x)$ при $x \to a$, если
-\end{definitionbox}
+Тогда
 
 \[
-\forall \varepsilon > 0 \;
-\exists \delta > 0\colon
-0 < |x-a| < \delta
-\Rightarrow
-|f(x)-A| < \varepsilon
+\sqrt{25-x^2-y^2}=\frac{1}{c},
 \]
 
-Обозначение:
+откуда
 
 \[
-\lim_{x \to a} f(x) = A
+25-x^2-y^2=\frac{1}{c^2}.
 \]
 
-\subsection*{Непрерывность функции}
-
-\begin{definitionbox}
-Функция $f$ называется непрерывной в точке $a$, если
-\end{definitionbox}
+Следовательно,
 
 \[
-\lim_{x \to a} f(x) = f(a)
+x^2+y^2=25-\frac{1}{c^2}.
+\]
+
+Чтобы линия уровня существовала, необходимо:
+
+\[
+25-\frac{1}{c^2}>0.
+\]
+
+Отсюда:
+
+\[
+c>\frac{1}{5}.
+\]
+
+Таким образом, линии уровня данной функции — это окружности
+
+\[
+x^2+y^2=25-\frac{1}{c^2},
+\]
+
+где
+
+\[
+c>\frac{1}{5}.
+\]
+
+\subsection*{Предел последовательности в $\mathbb{R}^n$}
+
+Пусть задана последовательность точек пространства $\mathbb{R}^n$:
+
+\[
+\{a_k\}, \quad a_k\in \mathbb{R}^n.
 \]
 
 То есть
 
 \[
-\forall \varepsilon > 0\;
-\exists \delta > 0\colon
-|x-a| < \delta
-\Rightarrow
-|f(x)-f(a)| < \varepsilon
+a_k=
+\left(
+a_1^{(k)},
+a_2^{(k)},
+\ldots,
+a_n^{(k)}
+\right).
 \]
 
-\subsection*{Последовательностный критерий предела}
+\begin{definitionbox}
+\textbf{Опр. 2.5 (предел последовательности в $\mathbb{R}^n$).}
+Точка
+\[
+a=(a_1,a_2,\ldots,a_n)\in \mathbb{R}^n
+\]
+называется \textit{пределом последовательности} $\{a_k\}$, если для любой $\varepsilon$-окрестности точки $a$ найдётся такой номер $N\in\mathbb{N}$, что при всех $k>N$ выполняется:
+\[
+a_k\in U(a,\varepsilon).
+\]
+\end{definitionbox}
+
+Иначе говоря,
+
+\[
+\lim_{k\to\infty} a_k=a.
+\]
+
+В метрической форме это можно записать так:
+
+\[
+\forall \varepsilon>0\ \exists N\in\mathbb{N}\ \forall k>N:
+\rho(a_k,a)<\varepsilon.
+\]
+
+\begin{definitionbox}
+\textbf{Опр. 2.6 (сходящаяся последовательность).}
+Последовательность $\{a_k\}$ называется \textit{сходящейся}, если она имеет конечный предел.
+\end{definitionbox}
+
+Если предела не существует, то последовательность называется расходящейся.
+
+\subsection*{Предел функции по множеству}
+
+Пусть
+
+\[
+A\subset \mathbb{R}^n, \quad A\subset D(f),
+\]
+
+и пусть точка
+
+\[
+a\in\mathbb{R}^n
+\]
+
+является предельной точкой множества $A$.
+
+Пусть также задана функция
+
+\[
+f:\mathbb{R}^n\to\mathbb{R}^m.
+\]
+
+\begin{definitionbox}
+\textbf{Опр. 2.7 (предел функции по множеству).}
+Точка
+\[
+b\in\mathbb{R}^m
+\]
+называется \textit{пределом функции} $f$ в точке $a$ по множеству $A$, если значения функции $f(x)$ стремятся к $b$ при $x\to a$, где $x\in A$.
+\end{definitionbox}
+
+Обозначение:
+
+\[
+\lim_{\substack{x\to a\\ x\in A}} f(x)=b.
+\]
+
+\subsubsection*{Определение по Коши}
+
+\[
+\lim_{\substack{x\to a\\ x\in A}} f(x)=b,
+\]
+
+если
+
+\[
+\forall \varepsilon>0\ \exists \delta>0\ \forall x\in \dot U(a,\delta)\cap A:
+f(x)\in U(b,\varepsilon).
+\]
+
+Или, в метрической форме:
+
+\[
+\forall \varepsilon>0\ \exists \delta>0\ \forall x\in A:
+0<\rho(x,a)<\delta \Rightarrow \rho(f(x),b)<\varepsilon.
+\]
+
+Здесь $\dot U(a,\delta)$ — проколотая окрестность точки $a$, то есть окрестность без самой точки $a$.
+
+\subsubsection*{Определение по Гейне}
+
+\[
+\lim_{\substack{x\to a\\ x\in A}} f(x)=b,
+\]
+
+если для любой последовательности $\{a_k\}$, такой что
+
+\[
+a_k\in A,\quad a_k\ne a,\quad a_k\to a,
+\]
+
+выполняется:
+
+\[
+f(a_k)\to b.
+\]
+
+\begin{definitionbox}
+\textbf{Опр. 2.8 (предел функции нескольких переменных).}
+Функция нескольких переменных имеет \textit{предел} в точке $a$, если она имеет один и тот же предел в этой точке по любому множеству $A\subset D(f)$, для которого точка $a$ является предельной.
+\end{definitionbox}
+
+То есть если
+
+\[
+\lim_{\substack{x\to a\\ x\in A}} f(x)=b
+\]
+
+для любого допустимого множества $A$, то
+
+\[
+\lim_{x\to a} f(x)=b.
+\]
+
+\subsection*{Пример}
+
+Рассмотрим функцию
+
+\[
+f(x,y)=
+\begin{cases}
+\dfrac{xy}{x^2+y^2}, & x^2+y^2\ne 0,\\[6pt]
+0, & x=0,\ y=0.
+\end{cases}
+\]
+
+Проверим, существует ли предел:
+
+\[
+\lim_{\substack{x\to 0\\ y\to 0}} f(x,y).
+\]
+
+Рассмотрим множество
+
+\[
+A_1=\{(x,y)\mid y=x^2\}.
+\]
+
+Тогда
+
+\[
+f(x,x^2)
+=
+\frac{x\cdot x^2}{x^2+x^4}
+=
+\frac{x^3}{x^2(1+x^2)}
+=
+\frac{x}{1+x^2}.
+\]
+
+Следовательно,
+
+\[
+\lim_{x\to 0} \frac{x}{1+x^2}=0.
+\]
+
+Теперь рассмотрим множество
+
+\[
+A_2=\{(x,y)\mid y=3x\}.
+\]
+
+Тогда
+
+\[
+f(x,3x)
+=
+\frac{x\cdot 3x}{x^2+9x^2}
+=
+\frac{3x^2}{10x^2}
+=
+\frac{3}{10}.
+\]
+
+Следовательно,
+
+\[
+\lim_{x\to 0} f(x,3x)=\frac{3}{10}.
+\]
+
+Получили разные пределы по разным множествам:
+
+\[
+0\ne \frac{3}{10}.
+\]
+
+Значит, общего предела не существует:
+
+\[
+\lim_{\substack{x\to 0\\ y\to 0}} f(x,y)
+\]
+
+не существует.
+
+\subsection*{Предел векторной функции}
+
+Пусть дана векторная функция нескольких переменных
+
+\[
+f:\mathbb{R}^n\to\mathbb{R}^m,
+\]
+
+причём
+
+\[
+A\subset D(f),
+\]
+
+а точка $a$ является предельной точкой множества $A$.
+
+Пусть
+
+\[
+f(x)=
+\left(
+f_1(x),
+f_2(x),
+\ldots,
+f_m(x)
+\right),
+\]
+
+и
+
+\[
+b=(b_1,b_2,\ldots,b_m)\in\mathbb{R}^m.
+\]
 
 \begin{theorembox}
+\textbf{Теорема 2.1 (предел векторной функции).}
+Тогда
 \[
-\lim_{x \to a} f(x) = A
+\lim_{\substack{x\to a\\ x\in A}} f(x)=b
 \]
-
-тогда и только тогда, когда для любой последовательности
-
+тогда и только тогда, когда существуют пределы всех координатных функций и выполняется:
 \[
-x_k \to a,
-\qquad x_k \ne a
-\]
-
-выполняется
-
-\[
-f(x_k) \to A
+\lim_{\substack{x\to a\\ x\in A}} f_1(x)=b_1,
+\quad
+\lim_{\substack{x\to a\\ x\in A}} f_2(x)=b_2,
+\quad
+\ldots,
+\quad
+\lim_{\substack{x\to a\\ x\in A}} f_m(x)=b_m.
 \]
 \end{theorembox}
 
-\subsection*{Пример функции}
+\begin{definitionbox}
+\textbf{Опр. 2.9 (бесконечно малая функция).}
+Функция
+\[
+f:\mathbb{R}^n\to\mathbb{R}^m
+\]
+называется \textit{бесконечно малой} при $x\to a$ по множеству $A$, если
+\[
+\lim_{\substack{x\to a\\ x\in A}} f(x)=0.
+\]
+\end{definitionbox}
+
+\begin{theorembox}
+\textbf{Теорема 2.2 (связь предела и бесконечно малой функции).}
+Существует предел
+\[
+\lim_{\substack{x\to a\\ x\in A}} f(x)=b
+\]
+тогда и только тогда, когда функцию $f(x)$ можно представить в виде
+\[
+f(x)=b+\alpha(x),
+\]
+где $\alpha(x)$ — бесконечно малая функция при $x\to a$ по множеству $A$:
+\[
+\alpha(x)\to 0.
+\]
+\end{theorembox}
+
+\begin{definitionbox}
+\textbf{Опр. 2.10 (бесконечно большая функция).}
+Функция
+\[
+f:\mathbb{R}^n\to\mathbb{R}
+\]
+называется \textit{бесконечно большой} при $x\to a$ по множеству $A\subset D(f)$, если
+\[
+\forall M>0\ \exists \delta>0\ \forall x\in \dot U(a,\delta)\cap A:
+|f(x)|>M.
+\]
+\end{definitionbox}
+
+Иначе говоря,
 
 \[
-f(x,y) = \sqrt{x^2 + y^2}
+f(x)\to\infty
 \]
 
-Область определения:
+по модулю при $x\to a$.
+
+\subsection*{Ограниченность}
+
+\begin{definitionbox}
+\textbf{Опр. 2.11 (ограниченная функция).}
+Функция
+\[
+f:\mathbb{R}^n\to\mathbb{R}^m
+\]
+называется \textit{ограниченной} на множестве $A\subset D(f)$, если множество её значений на $A$
+\[
+f(A)=\{y\in\mathbb{R}^m\mid y=f(x),\ x\in A\}
+\]
+является ограниченным множеством.
+\end{definitionbox}
+
+То есть существует такое число $C>0$, что
 
 \[
-D = \mathbb{R}^2
+\|f(x)\|\le C
 \]
 
-\subsection*{Пример предела}
+для всех
 
 \[
-\lim\limits_{(x,y)\to(0,0)} \sqrt{x^2 + y^2} = 0
+x\in A.
 \]
+
+\begin{definitionbox}
+\textbf{Локально ограниченная функция.}
+Функция
+\[
+f:\mathbb{R}^n\to\mathbb{R}^m
+\]
+называется \textit{локально ограниченной} в точке $a\in A$, если существует такая окрестность точки $a$, что функция ограничена в этой окрестности.
+\end{definitionbox}
+
+То есть существует $\delta>0$, такое что функция $f$ ограничена на множестве
+
+\[
+U(a,\delta)\cap A.
+\]
+
+Если рассматривается поведение при $x\to a$, иногда используют проколотую окрестность:
+
+\[
+\dot U(a,\delta)\cap A.
+\]
+
+\subsection*{Непрерывность}
+
+Пусть
+
+\[
+f:\mathbb{R}^n\to\mathbb{R}^m,
+\quad
+A\subset D(f),
+\]
+
+и
+
+\[
+a\in A.
+\]
+
+\begin{definitionbox}
+\textbf{Опр. 2.12 (непрерывность функции в точке).}
+Функция $f$ называется \textit{непрерывной} в точке $a$ по множеству $A$, если
+\[
+\lim_{\substack{x\to a\\ x\in A}} f(x)=f(a).
+\]
+\end{definitionbox}
+
+То есть выполняются два условия:
+
+существует предел функции в точке $a$ по множеству $A$:
+
+\[
+\exists \lim_{\substack{x\to a\\ x\in A}} f(x);
+\]
+
+этот предел равен значению функции в точке $a$:
+
+\[
+\lim_{\substack{x\to a\\ x\in A}} f(x)=f(a).
+\]
+
+\begin{notebox}
+\textbf{Замечание.}
+Если точка $a$ является изолированной точкой множества $A$, то функция $f$ автоматически непрерывна в точке $a$.
+\end{notebox}
+
+\begin{definitionbox}
+\textbf{Непрерывность на множестве.}
+Функция называется \textit{непрерывной} на множестве $A$, если она непрерывна в каждой точке этого множества.
+\end{definitionbox}
+
+\begin{theorembox}
+\textbf{Теорема 2.4 (непрерывность векторной функции).}
+Пусть
+\[
+f:\mathbb{R}^n\to\mathbb{R}^m,
+\quad
+f(x)=
+\left(
+f_1(x),
+f_2(x),
+\ldots,
+f_m(x)
+\right).
+\]
+Функция $f$ непрерывна в точке $a\in A$ тогда и только тогда, когда все её координатные функции
+\[
+f_1,
+f_2,
+\ldots,
+f_m
+\]
+непрерывны в точке $a$.
+\end{theorembox}
+
+\begin{theorembox}
+\textbf{Свойства непрерывных функций.}
+Если функции $f$ и $g$ непрерывны в точке $a$, то непрерывны также:
+\[
+f+g,\quad
+f-g,\quad
+f\cdot g,\quad
+\frac{f}{g}, \text{ если } g(a)\ne 0.
+\]
+Также непрерывна композиция непрерывных функций.
+\end{theorembox}
+
+\subsection*{Частные производные}
+
+Пусть дана функция
+
+\[
+f:\mathbb{R}^n\to\mathbb{R}^m,
+\]
+
+определённая в некоторой окрестности точки
+
+\[
+a=(a_1,a_2,\ldots,a_n)\in\mathbb{R}^n.
+\]
+
+Пусть $\Delta x_i$ — приращение $i$-й переменной, причём точка
+
+\[
+(a_1,\ldots,a_i+\Delta x_i,\ldots,a_n)
+\]
+
+принадлежит области определения функции.
+
+\begin{definitionbox}
+\textbf{Опр. 3.1 (частное приращение функции).}
+Частным приращением функции $f$ по переменной $x_i$ в точке $a$ называется разность
+\[
+\Delta_i f(a)
+=
+f(a_1,\ldots,a_i+\Delta x_i,\ldots,a_n)
+-
+f(a_1,\ldots,a_i,\ldots,a_n).
+\]
+\end{definitionbox}
+
+\begin{definitionbox}
+\textbf{Опр. 3.2 (частная производная).}
+Частной производной функции $f$ по переменной $x_i$ в точке $a$ называется предел
+\[
+\lim_{\Delta x_i\to 0}
+\frac{\Delta_i f(a)}{\Delta x_i},
+\]
+если этот предел существует.
+\end{definitionbox}
+
+Обозначения:
+
+\[
+f'_{x_i}(a),
+\]
+
+или
+
+\[
+\frac{\partial f(a)}{\partial x_i}.
+\]
+
+Для функции двух переменных часто пишут:
+
+\[
+f'_x(a),\quad f'_y(a),
+\]
+
+или
+
+\[
+\frac{\partial f(a)}{\partial x},
+\quad
+\frac{\partial f(a)}{\partial y}.
+\]
+
+\begin{notebox}
+\textbf{Замечание.}
+Для нахождения частных производных используется обычная техника дифференцирования функций одной переменной.
+
+При вычислении частной производной по одной переменной остальные переменные считаются постоянными.
+\end{notebox}
+
+\subsection*{Пример}
+
+Пусть
+
+\[
+f(x,y,z)=xy^2+\sin(yz).
+\]
+
+Найдём частные производные первого порядка.
+
+По переменной $x$:
+
+\[
+f'_x
+=
+\frac{\partial f}{\partial x}
+=
+y^2.
+\]
+
+По переменной $y$:
+
+\[
+f'_y
+=
+\frac{\partial f}{\partial y}
+=
+2xy+z\cos(yz).
+\]
+
+По переменной $z$:
+
+\[
+f'_z
+=
+\frac{\partial f}{\partial z}
+=
+y\cos(yz).
+\]
+
+Итак,
+
+\[
+f'(x,y,z)
+=
+(f'_x,f'_y,f'_z)
+=
+(y^2,\ 2xy+z\cos(yz),\ y\cos(yz)).
+\]
+
+Это градиент функции:
+
+\[
+\nabla f
+=
+(y^2,\ 2xy+z\cos(yz),\ y\cos(yz)).
+\]
+
+\subsection*{Частные производные второго порядка}
+
+Найдём некоторые частные производные второго порядка.
+
+\[
+f''_{xx}
+=
+\frac{\partial^2 f}{\partial x^2}
+=
+\frac{\partial}{\partial x}(y^2)
+=
+0.
+\]
+
+\[
+f''_{yx}
+=
+\frac{\partial^2 f}{\partial x\partial y}
+=
+\frac{\partial}{\partial x}(2xy+z\cos(yz))
+=
+2y.
+\]
+
+Здесь важно: если сначала берётся производная по $y$, а потом по $x$, то
+
+\[
+f''_{yx}
+=
+\frac{\partial}{\partial x}
+\left(
+\frac{\partial f}{\partial y}
+\right).
+\]
+
+То есть порядок индексов показывает порядок взятия производных.
+
+\section{Лекция 11. Частные производные. Матрица Якоби}
+
+вторник, 21 апреля 2026 г.
+
+\subsection*{Частные производные. Матрица Якоби}
+
+\subsection*{Пример}
+
+Пусть задана векторная функция
+
+\[
+f(x,y)
+=
+\begin{pmatrix}
+e^{2x}-\dfrac{1}{y}\\
+x\sin y
+\end{pmatrix}.
+\]
+
+Найдём её частные производные.
+
+По переменной $x$:
+
+\[
+f'_x
+=
+\frac{\partial f}{\partial x}
+=
+\begin{pmatrix}
+\left(e^{2x}-\dfrac{1}{y}\right)'_x\\
+(x\sin y)'_x
+\end{pmatrix}
+=
+\begin{pmatrix}
+2e^{2x}\\
+\sin y
+\end{pmatrix}.
+\]
+
+По переменной $y$:
+
+\[
+f'_y
+=
+\frac{\partial f}{\partial y}
+=
+\begin{pmatrix}
+\left(e^{2x}-\dfrac{1}{y}\right)'_y\\
+(x\sin y)'_y
+\end{pmatrix}
+=
+\begin{pmatrix}
+\dfrac{1}{y^2}\\
+x\cos y
+\end{pmatrix}.
+\]
+
+\begin{definitionbox}
+\textbf{Опр. 3.3 (матрица Якоби).}
+Пусть задана функция
+\[
+f:\mathbb{R}^n\to\mathbb{R}^m,
+\]
+где
+\[
+f(x)
+=
+\begin{pmatrix}
+f_1(x)\\
+f_2(x)\\
+\vdots\\
+f_m(x)
+\end{pmatrix},
+\quad
+x=(x_1,x_2,\ldots,x_n).
+\]
+Матрицей Якоби функции $f$ называется матрица, составленная из частных производных её координатных функций:
+\[
+f'(x)
+=
+\frac{\partial f(x)}{\partial x}
+=
+\begin{pmatrix}
+\dfrac{\partial f_1}{\partial x_1}
+&
+\dfrac{\partial f_1}{\partial x_2}
+&
+\cdots
+&
+\dfrac{\partial f_1}{\partial x_n}
+\\[8pt]
+\dfrac{\partial f_2}{\partial x_1}
+&
+\dfrac{\partial f_2}{\partial x_2}
+&
+\cdots
+&
+\dfrac{\partial f_2}{\partial x_n}
+\\
+\vdots
+&
+\vdots
+&
+\ddots
+&
+\vdots
+\\[4pt]
+\dfrac{\partial f_m}{\partial x_1}
+&
+\dfrac{\partial f_m}{\partial x_2}
+&
+\cdots
+&
+\dfrac{\partial f_m}{\partial x_n}
+\end{pmatrix}.
+\]
+\end{definitionbox}
+
+То есть элемент матрицы Якоби имеет вид
+
+\[
+J_{ij}
+=
+\frac{\partial f_i}{\partial x_j}.
+\]
+
+Если
+
+\[
+f:\mathbb{R}^n\to\mathbb{R},
+\]
+
+то матрица Якоби превращается в строку частных производных:
+
+\[
+f'(x)
+=
+\left(
+\frac{\partial f}{\partial x_1},
+\frac{\partial f}{\partial x_2},
+\ldots,
+\frac{\partial f}{\partial x_n}
+\right).
+\]
+
+\subsection*{Геометрический смысл частных производных}
+
+Пусть
+
+\[
+f:\mathbb{R}^2\to\mathbb{R},
+\quad
+z=f(x,y).
+\]
+
+График функции $f$ в пространстве $\mathbb{R}^3$ является поверхностью:
+
+\[
+\Gamma_f.
+\]
+
+Пусть
+
+\[
+a=(a_1,a_2)\in\mathbb{R}^2.
+\]
+
+Рассмотрим сечения поверхности координатными плоскостями.
+
+Первое сечение:
+
+\[
+\Pi_1=\{(x,y)\mid y=a_2\}.
+\]
+
+Тогда на поверхности получается кривая
+
+\[
+\gamma_1.
+\]
+
+Для неё рассматривается функция одной переменной:
+
+\[
+z=f(x,a_2).
+\]
+
+Производная
+
+\[
+\frac{\partial f(a)}{\partial x}
+\]
+
+задаёт угловой коэффициент касательной к кривой $\gamma_1$.
+
+Если $\alpha$ — угол между этой касательной и положительным направлением оси $Ox$, то
+
+\[
+\tan\alpha
+=
+\frac{\partial f(a)}{\partial x}.
+\]
+
+Второе сечение:
+
+\[
+\Pi_2=\{(x,y)\mid x=a_1\}.
+\]
+
+Тогда на поверхности получается кривая
+
+\[
+\gamma_2.
+\]
+
+Для неё рассматривается функция одной переменной:
+
+\[
+z=f(a_1,y).
+\]
+
+Производная
+
+\[
+\frac{\partial f(a)}{\partial y}
+\]
+
+задаёт угловой коэффициент касательной к кривой $\gamma_2$.
+
+Если $\beta$ — угол между этой касательной и положительным направлением оси $Oy$, то
+
+\[
+\tan\beta
+=
+\frac{\partial f(a)}{\partial y}.
+\]
+
+\subsection*{Производные высших порядков}
+
+\begin{definitionbox}
+\textbf{Опр. 3.4 (частные производные второго порядка).}
+Пусть
+\[
+f:\mathbb{R}^n\to\mathbb{R}
+\]
+и в некоторой окрестности точки
+\[
+a\in\mathbb{R}^n
+\]
+существуют частные производные первого порядка.
+
+Если частная производная
+\[
+\frac{\partial f}{\partial x_i}
+\]
+имеет частную производную по переменной $x_j$, то эта производная называется частной производной второго порядка:
+\[
+\frac{\partial}{\partial x_j}
+\left(
+\frac{\partial f}{\partial x_i}
+\right)
+=
+\frac{\partial^2 f}{\partial x_j\partial x_i}.
+\]
+\end{definitionbox}
+
+Обозначение:
+
+\[
+f''_{x_i x_j}(a).
+\]
+
+Если $i=j$, то получаем вторую частную производную по одной и той же переменной:
+
+\[
+\frac{\partial^2 f}{\partial x_i^2}.
+\]
+
+Если $i\ne j$, то производная называется смешанной частной производной.
+
+Например:
+
+\[
+f''_{xy}
+=
+\frac{\partial}{\partial y}
+\left(
+\frac{\partial f}{\partial x}
+\right),
+\quad
+f''_{yx}
+=
+\frac{\partial}{\partial x}
+\left(
+\frac{\partial f}{\partial y}
+\right).
+\]
+
+\begin{definitionbox}
+\textbf{Опр. 3.5 (матрица Гессе).}
+Пусть
+\[
+f:\mathbb{R}^n\to\mathbb{R}.
+\]
+Матрицей Гессе функции $f$ называется матрица вторых частных производных:
+\[
+f''(x)
+=
+\begin{pmatrix}
+\dfrac{\partial^2 f}{\partial x_1^2}
+&
+\dfrac{\partial^2 f}{\partial x_2\partial x_1}
+&
+\cdots
+&
+\dfrac{\partial^2 f}{\partial x_n\partial x_1}
+\\[8pt]
+\dfrac{\partial^2 f}{\partial x_1\partial x_2}
+&
+\dfrac{\partial^2 f}{\partial x_2^2}
+&
+\cdots
+&
+\dfrac{\partial^2 f}{\partial x_n\partial x_2}
+\\
+\vdots
+&
+\vdots
+&
+\ddots
+&
+\vdots
+\\[4pt]
+\dfrac{\partial^2 f}{\partial x_1\partial x_n}
+&
+\dfrac{\partial^2 f}{\partial x_2\partial x_n}
+&
+\cdots
+&
+\dfrac{\partial^2 f}{\partial x_n^2}
+\end{pmatrix}.
+\]
+\end{definitionbox}
+
+Эта матрица также называется гессианом функции.
+
+\begin{theorembox}
+\textbf{Теорема 3.1 (о равенстве смешанных производных).}
+Пусть
+\[
+f:\mathbb{R}^n\to\mathbb{R}
+\]
+имеет в некоторой окрестности точки $a$ смешанные частные производные
+\[
+f''_{x_i x_j}
+\quad
+\text{и}
+\quad
+f''_{x_j x_i}.
+\]
+Если эти производные непрерывны в точке $a$, то они равны в этой точке:
+\[
+f''_{x_i x_j}(a)
+=
+f''_{x_j x_i}(a).
+\]
+Иначе говоря,
+\[
+\frac{\partial^2 f(a)}{\partial x_j\partial x_i}
+=
+\frac{\partial^2 f(a)}{\partial x_i\partial x_j}.
+\]
+\end{theorembox}
+
+\subsection*{Доказательство для случая двух переменных}
+
+Пусть
+
+\[
+f:\mathbb{R}^2\to\mathbb{R},
+\]
+
+и пусть
+
+\[
+a=(x_0,y_0).
+\]
+
+Возьмём приращения $\Delta x$ и $\Delta y$ такие, что
+
+\[
+(x_0+\Delta x,\ y_0+\Delta y)\in U(a).
+\]
+
+Рассмотрим вспомогательную величину:
+
+\[
+g(\Delta x,\Delta y)
+=
+f(x_0+\Delta x,y_0+\Delta y)
+-
+f(x_0+\Delta x,y_0)
+-
+f(x_0,y_0+\Delta y)
++
+f(x_0,y_0).
+\]
+
+Сначала сгруппируем выражение по переменной $x$.
+
+Введём функцию
+
+\[
+\varphi(x)
+=
+f(x,y_0+\Delta y)
+-
+f(x,y_0).
+\]
+
+Тогда
+
+\[
+g(\Delta x,\Delta y)
+=
+\varphi(x_0+\Delta x)
+-
+\varphi(x_0).
+\]
+
+По теореме Лагранжа:
+
+\[
+g(\Delta x,\Delta y)
+=
+\varphi'(x_0+\theta_1\Delta x)\Delta x,
+\quad
+\theta_1\in(0,1).
+\]
+
+Но
+
+\[
+\varphi'(x)
+=
+f'_x(x,y_0+\Delta y)
+-
+f'_x(x,y_0).
+\]
+
+Значит,
+
+\[
+g(\Delta x,\Delta y)
+=
+\left[
+f'_x(x_0+\theta_1\Delta x,y_0+\Delta y)
+-
+f'_x(x_0+\theta_1\Delta x,y_0)
+\right]\Delta x.
+\]
+
+Ещё раз применяя теорему Лагранжа по переменной $y$, получаем:
+
+\[
+g(\Delta x,\Delta y)
+=
+f''_{xy}(x_0+\theta_1\Delta x,\ y_0+\theta_2\Delta y)
+\Delta x\Delta y,
+\]
+
+где
+
+\[
+\theta_2\in(0,1).
+\]
+
+Теперь сгруппируем выражение по переменной $y$.
+
+Введём функцию
+
+\[
+\psi(y)
+=
+f(x_0+\Delta x,y)
+-
+f(x_0,y).
+\]
+
+Тогда
+
+\[
+g(\Delta x,\Delta y)
+=
+\psi(y_0+\Delta y)
+-
+\psi(y_0).
+\]
+
+По теореме Лагранжа:
+
+\[
+g(\Delta x,\Delta y)
+=
+\psi'(y_0+\eta_2\Delta y)\Delta y,
+\quad
+\eta_2\in(0,1).
+\]
+
+А значит,
+
+\[
+g(\Delta x,\Delta y)
+=
+f''_{yx}(x_0+\eta_1\Delta x,\ y_0+\eta_2\Delta y)
+\Delta x\Delta y,
+\]
+
+где
+
+\[
+\eta_1\in(0,1).
+\]
+
+Получили два выражения для одной и той же величины $g$:
+
+\[
+g(\Delta x,\Delta y)
+=
+f''_{xy}(x_0+\theta_1\Delta x,\ y_0+\theta_2\Delta y)
+\Delta x\Delta y,
+\]
+
+\[
+g(\Delta x,\Delta y)
+=
+f''_{yx}(x_0+\eta_1\Delta x,\ y_0+\eta_2\Delta y)
+\Delta x\Delta y.
+\]
+
+При $\Delta x\ne 0$, $\Delta y\ne 0$ делим на $\Delta x\Delta y$:
+
+\[
+f''_{xy}(x_0+\theta_1\Delta x,\ y_0+\theta_2\Delta y)
+=
+f''_{yx}(x_0+\eta_1\Delta x,\ y_0+\eta_2\Delta y).
+\]
+
+Переходя к пределу при
+
+\[
+\Delta x\to 0,
+\quad
+\Delta y\to 0,
+\]
+
+и используя непрерывность смешанных производных, получаем:
+
+\[
+f''_{xy}(x_0,y_0)
+=
+f''_{yx}(x_0,y_0).
+\]
+
+Теорема доказана.
+
+\subsection*{§4. Дифференцируемые функции нескольких переменных}
+
+\subsection*{Полное приращение функции}
+
+Пусть
+
+\[
+f:\mathbb{R}^n\to\mathbb{R}^m
+\]
+
+определена в некоторой окрестности точки
+
+\[
+x=(x_1,x_2,\ldots,x_n)\in\mathbb{R}^n.
+\]
+
+Пусть
+
+\[
+\Delta x
+=
+\begin{pmatrix}
+\Delta x_1\\
+\Delta x_2\\
+\vdots\\
+\Delta x_n
+\end{pmatrix}
+\]
+
+— приращение аргумента, причём
+
+\[
+x+\Delta x\in U(x).
+\]
+
+\begin{definitionbox}
+\textbf{Полное приращение функции.}
+Полным приращением функции $f$ называется величина
+\[
+\Delta f(x)
+=
+f(x+\Delta x)-f(x).
+\]
+\end{definitionbox}
+
+Если функция векторная, то
+
+\[
+\Delta f(x)
+=
+\begin{pmatrix}
+\Delta f_1(x)\\
+\Delta f_2(x)\\
+\vdots\\
+\Delta f_m(x)
+\end{pmatrix}
+=
+\begin{pmatrix}
+f_1(x+\Delta x)-f_1(x)\\
+f_2(x+\Delta x)-f_2(x)\\
+\vdots\\
+f_m(x+\Delta x)-f_m(x)
+\end{pmatrix}.
+\]
+
+\begin{definitionbox}
+\textbf{Опр. 4.1 (дифференцируемость функции).}
+Пусть
+\[
+f:\mathbb{R}^n\to\mathbb{R}
+\]
+определена в некоторой окрестности точки
+\[
+x\in\mathbb{R}^n.
+\]
+Функция $f$ называется \textit{дифференцируемой} в точке $x$, если её полное приращение можно представить в виде
+\[
+\Delta f(x)
+=
+A\Delta x
++
+o(|\Delta x|),
+\quad
+|\Delta x|\to 0,
+\]
+где $A$ — некоторая матрица-строка размера $1\times n$:
+\[
+A=(a_1,a_2,\ldots,a_n),
+\]
+а
+\[
+|\Delta x|
+=
+\sqrt{
+(\Delta x_1)^2
++
+(\Delta x_2)^2
++
+\ldots
++
+(\Delta x_n)^2
+}.
+\]
+\end{definitionbox}
+
+Запись
+
+\[
+o(|\Delta x|)
+\]
+
+означает бесконечно малую величину более высокого порядка малости, чем $|\Delta x|$:
+
+\[
+\frac{o(|\Delta x|)}{|\Delta x|}
+\to 0
+\quad
+\text{при}
+\quad
+|\Delta x|\to 0.
+\]
+
+Для дифференцируемой функции матрица $A$ состоит из частных производных:
+
+\[
+A
+=
+\left(
+\frac{\partial f}{\partial x_1},
+\frac{\partial f}{\partial x_2},
+\ldots,
+\frac{\partial f}{\partial x_n}
+\right).
+\]
+
+Поэтому
+
+\[
+\Delta f(x)
+=
+\frac{\partial f}{\partial x_1}\Delta x_1
++
+\frac{\partial f}{\partial x_2}\Delta x_2
++
+\ldots
++
+\frac{\partial f}{\partial x_n}\Delta x_n
++
+o(|\Delta x|).
+\]
+
+\begin{definitionbox}
+\textbf{Дифференциал функции.}
+Главная линейная часть приращения называется \textit{дифференциалом функции}:
+\[
+df
+=
+\frac{\partial f}{\partial x_1}dx_1
++
+\frac{\partial f}{\partial x_2}dx_2
++
+\ldots
++
+\frac{\partial f}{\partial x_n}dx_n.
+\]
+\end{definitionbox}
+
+\begin{theorembox}
+\textbf{Теорема 4.1 (дифференцируемость и непрерывность).}
+Если функция
+\[
+f:\mathbb{R}^n\to\mathbb{R}
+\]
+дифференцируема в точке $a$, то она непрерывна в этой точке.
+\[
+f \text{ дифференцируема в } a
+\Rightarrow
+f \text{ непрерывна в } a.
+\]
+\end{theorembox}
+
+Обратное вообще говоря неверно: непрерывность функции в точке не гарантирует её дифференцируемость в этой точке.
+
+\begin{theorembox}
+\textbf{Следствие.}
+Если функция $f$ дифференцируема в точке $a$, то в этой точке существуют все её частные производные.
+\[
+f \text{ дифференцируема в } a
+\Rightarrow
+\exists
+\frac{\partial f(a)}{\partial x_i}
+\quad
+\text{для всех}
+\quad
+i=1,\ldots,n.
+\]
+\end{theorembox}
+
+Но обратное неверно: существование всех частных производных в точке ещё не гарантирует дифференцируемость функции в этой точке.
 
 \end{document}
