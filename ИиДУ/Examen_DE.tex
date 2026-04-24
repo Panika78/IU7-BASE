@@ -1,0 +1,510 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath, amssymb}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{geometry}
+
+\geometry{left=1cm,right=1cm,top=1.2cm,bottom=1.2cm}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+
+\setlength{\abovedisplayskip}{4pt}
+\setlength{\belowdisplayskip}{4pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{3pt}
+
+\allowdisplaybreaks
+
+% ---------- Цвета ----------
+\definecolor{questioncolor}{RGB}{46, 125, 50}
+\definecolor{answercolor}{RGB}{25, 118, 210}
+\definecolor{definitioncolor}{RGB}{30, 136, 229}
+\definecolor{theoremcolor}{RGB}{198, 40, 40}
+\definecolor{proofcolor}{RGB}{239, 108, 0}
+
+% ---------- Блоки ----------
+\newtcolorbox{questionbox}{
+    enhanced,
+    breakable,
+    colback=questioncolor!5,
+    colframe=questioncolor,
+    boxrule=0pt,
+    leftrule=4pt,
+    arc=0mm,
+    left=6pt,
+    right=6pt,
+    top=4pt,
+    bottom=4pt,
+    before skip=4pt,
+    after skip=4pt,
+    fontupper=\small
+}
+
+\newtcolorbox{answerbox}{
+    enhanced,
+    breakable,
+    colback=answercolor!4,
+    colframe=answercolor,
+    boxrule=0pt,
+    leftrule=4pt,
+    arc=0mm,
+    left=6pt,
+    right=6pt,
+    top=4pt,
+    bottom=4pt,
+    before skip=4pt,
+    after skip=4pt,
+    fontupper=\small
+}
+
+\newtcolorbox{definitionbox}{
+    enhanced,
+    breakable,
+    colback=definitioncolor!5,
+    colframe=definitioncolor,
+    boxrule=0pt,
+    leftrule=4pt,
+    arc=0mm,
+    left=6pt,
+    right=6pt,
+    top=4pt,
+    bottom=4pt,
+    before skip=4pt,
+    after skip=4pt,
+    fontupper=\small
+}
+
+\newtcolorbox{theorembox}{
+    enhanced,
+    breakable,
+    colback=theoremcolor!5,
+    colframe=theoremcolor,
+    boxrule=0pt,
+    leftrule=4pt,
+    arc=0mm,
+    left=6pt,
+    right=6pt,
+    top=4pt,
+    bottom=4pt,
+    before skip=4pt,
+    after skip=4pt,
+    fontupper=\small
+}
+
+\newtcolorbox{proofbox}{
+    enhanced,
+    breakable,
+    colback=proofcolor!5,
+    colframe=proofcolor,
+    boxrule=0pt,
+    leftrule=4pt,
+    arc=0mm,
+    left=6pt,
+    right=6pt,
+    top=4pt,
+    bottom=4pt,
+    before skip=4pt,
+    after skip=4pt,
+    fontupper=\small
+}
+
+% ---------- Команды ----------
+\newcommand{\examquestion}[1]{
+\begin{questionbox}
+\textbf{Вопрос.} #1
+\end{questionbox}
+}
+
+\newcommand{\examanswer}[1]{
+\begin{answerbox}
+\textbf{Ответ.} #1
+\end{answerbox}
+}
+
+\newcommand{\examdefinition}[1]{
+\begin{definitionbox}
+\textbf{Определение.} #1
+\end{definitionbox}
+}
+
+\newcommand{\examtheorem}[1]{
+\begin{theorembox}
+\textbf{Теорема.} #1
+\end{theorembox}
+}
+
+\newcommand{\examproof}[1]{
+\begin{proofbox}
+\textbf{Доказательство.} #1
+\end{proofbox}
+}
+
+\newcommand{\term}[1]{\textbf{#1}}
+\newcommand{\important}[1]{\textit{#1}}
+
+\newcommand{\examstep}[1]{
+\par\smallskip
+\noindent\textcolor{answercolor}{\rule{\linewidth}{0.4pt}}
+\par\vspace{-2pt}
+\noindent{\textbf{\textcolor{answercolor}{#1}}}
+\par\vspace{-4pt}
+\noindent\textcolor{answercolor}{\rule{\linewidth}{0.4pt}}
+\par\smallskip
+}
+
+\begin{document}
+
+\tableofcontents
+\newpage
+
+% =======================
+
+\section{Дифференциальные уравнения}
+
+\subsection{Линейные дифференциальные уравнения первого порядка}
+
+\examquestion{Линейные дифференциальные уравнения первого порядка. Интегрирование линейных неоднородных дифференциальных уравнений первого порядка методом Бернулли (метод ``$u \cdot v$'') и методом Лагранжа (вариации произвольной постоянной). [Л. 15.]}
+
+\examdefinition{
+\term{Обыкновенным дифференциальным уравнением (ОДУ) первого порядка} называется уравнение, которое зависит от одной переменной $x$, неизвестной функции $y(x)$ и её производной:
+\[
+F(x,y(x),y'(x))=0.
+\]
+}
+
+\examanswer{
+Решение ЛНДУ методом Лагранжа (метод вариации произвольной постоянной)
+
+Рассмотрим линейное неоднородное дифференциальное уравнение первого порядка:
+\[
+y'+p(x)y=f(x),
+\]
+где $p(x),f(x)$ — непрерывные функции на промежутке $I\subset \mathbb{R}$.
+
+\examstep{Шаг 1. Решение соответствующего ЛОДУ}
+
+Рассмотрим однородное уравнение:
+\[
+y'+p(x)y=0.
+\]
+
+Разделим переменные:
+\[
+\frac{dy}{dx}=-p(x)y.
+\]
+
+При $y\neq 0$:
+\[
+\frac{dy}{y}=-p(x)dx.
+\]
+
+Интегрируем:
+\[
+\int \frac{dy}{y}=-\int p(x)dx.
+\]
+
+Получаем:
+\[
+\ln|y|=-\int p(x)dx+C.
+\]
+
+Отсюда:
+\[
+y=Ce^{-\int p(x)dx}.
+\]
+
+Особое решение
+
+При $y=0$:
+\[
+0+p(x)\cdot 0=0,
+\]
+то есть это тоже решение.
+
+Оно входит в общее решение при $C=0$, поэтому отдельно его учитывать не нужно.
+
+Общее решение ЛОДУ:
+\[
+y=Ce^{-\int p(x)dx}.
+\]
+
+\examstep{Шаг 2. Вариация постоянной}
+
+Пусть теперь $C=C(x)$ — функция.
+
+Ищем решение ЛНДУ в виде:
+\[
+y=C(x)e^{-\int p(x)dx}.
+\]
+
+\examstep{Шаг 3. Подстановка в исходное уравнение}
+
+Найдём производную:
+\[
+y'=C'(x)e^{-\int p(x)dx}-C(x)p(x)e^{-\int p(x)dx}.
+\]
+
+Подставляем в уравнение:
+\[
+y'+p(x)y=f(x).
+\]
+
+Получаем:
+\[
+C'(x)e^{-\int p(x)dx}=f(x).
+\]
+
+\examstep{Шаг 4. Нахождение $C(x)$}
+
+\[
+C'(x)=f(x)e^{\int p(x)dx}.
+\]
+
+Интегрируем:
+\[
+C(x)=\int f(x)e^{\int p(x)dx}dx+k.
+\]
+
+\examstep{Итоговое решение ЛНДУ}
+
+Подставляем $C(x)$ обратно:
+\[
+y=e^{-\int p(x)dx}\left(\int f(x)e^{\int p(x)dx}dx+k\right),\quad k=\mathrm{const}.
+\]
+}
+
+\examanswer{
+Решение ЛНДУ методом Бернулли (подстановка $y=u(x)v(x)$)
+
+Рассмотрим линейное неоднородное уравнение:
+\[
+y'+p(x)y=f(x),
+\]
+где $p(x),f(x)$ — непрерывные функции на промежутке $I\subset \mathbb{R}$.
+
+\examstep{Шаг 1. Подстановка}
+
+Положим:
+\[
+y=u(x)v(x).
+\]
+
+Тогда:
+\[
+y'=u'v+uv'.
+\]
+
+Подставим в исходное уравнение:
+\[
+u'v+uv'+p(x)uv=f(x).
+\]
+
+Сгруппируем:
+\[ 
+v(u'+p(x)u) + (uv' -f(x)) = 0
+\]
+
+\examstep{Шаг 2. Выбор функции $u(x)$}
+
+У нас есть свобода выбора. Удобно положить:
+\[
+u'+p(x)u=0.
+\]
+
+Это ЛОДУ.
+
+\examstep{Шаг 3. Решение для $u(x)$}
+
+\[
+u'=-p(x)u. \text{- ДУ с раз. пер}
+\]
+
+Разделим переменные:
+\[
+\frac{du}{u}=-p(x)dx.
+\]
+
+Интегрируем:
+\[
+\ln|u|=-\int p(x)dx+C \quad \forall C = \mathrm{const}.
+\]
+
+\[
+e^{\ln|u|} = e^{-\int p(x)\,dx + C}
+\]
+
+\[
+u=Ce^{-\int p(x)dx}.
+\]
+
+Так как у нас имеется произвол по одной из переменных, то мы не только можем
+выбрать ее, как нам удобно, но и конкретизировать общее решение (т.е. перейти от
+общего решения к частному)
+
+Для этого выберем $C = 1$ в последнем равенстве
+\[
+u=e^{-\int p(x)dx}.
+\]
+
+\examstep{Шаг 4. Подстановка в уравнение}
+
+Подставляем в исходное выражение:
+\[
+u'v+uv'+p(x)uv=f(x).
+\]
+
+С учётом выбора $u$:
+\[
+uv'=f(x).
+\]
+
+\examstep{Шаг 5. Нахождение $v(x)$}
+
+\[
+v'=\frac{f(x)}{u}.
+\]
+
+Подставляем $u$:
+\[
+v'=f(x)e^{\int p(x)dx}.
+\]
+
+Интегрируем:
+\[
+v=\int f(x)e^{\int p(x)dx}dx+k.
+\]
+
+\examstep{Итоговое решение}
+
+\[
+y=u\cdot v=e^{-\int p(x)dx}\left(\int f(x)e^{\int p(x)dx}dx+k\right),\quad k=\mathrm{const}.
+\]
+}
+
+\section*{Вопрос 22. Теорема Коши о существовании и единственности решения дифференциального уравнения $n$-го порядка. Интегрирование дифференциальных уравнений $n$-го порядка, допускающих понижение порядка}
+
+\begin{theorembox}
+\textbf{Теорема существования и единственности решения задачи Коши для дифференциального уравнения $n$-го порядка}
+
+Пусть дано дифференциальное уравнение $n$-го порядка:
+\[
+y^{(n)} = f\left(x, y, y', \ldots, y^{(n-1)}\right).
+\]
+
+Если функция
+\[
+f\left(x, y, y', \ldots, y^{(n-1)}\right)
+\]
+и её частные производные
+\[
+\frac{\partial f}{\partial y},
+\frac{\partial f}{\partial y'},
+\ldots,
+\frac{\partial f}{\partial y^{(n-1)}}
+\]
+непрерывны в некоторой области
+\[
+D \subset \mathbb{R}^{n+1},
+\]
+содержащей точку
+\[
+\left(x_0, y_0, y'_0, \ldots, y^{(n-1)}_0\right),
+\]
+то существует и притом единственное решение дифференциального уравнения $n$-го порядка, удовлетворяющее начальным условиям:
+\[
+y(x_0) = y_0,\quad
+y'(x_0) = y'_0,\quad
+\ldots,\quad
+y^{(n-1)}(x_0) = y^{(n-1)}_0.
+\]
+\end{theorembox}
+
+\begin{answerbox}
+\textbf{Интегрирование дифференциальных уравнений $n$-го порядка, допускающих понижение порядка}
+
+\textbf{1. Уравнения вида}
+\[
+y^{(n)} = f(x).
+\]
+
+Метод решения: $n$-кратное интегрирование:
+\[
+y = \int \ldots \int f(x)\,dx^n.
+\]
+
+При этом после каждого интегрирования появляется произвольная постоянная, поэтому общее решение содержит $n$ произвольных постоянных.
+
+\[
+y =
+\underbrace{\int \ldots \int}_{n}
+f(x)\,dx^n
++ C_1x^{n-1} + C_2x^{n-2} + \ldots + C_{n-1}x + C_n.
+\]
+
+\textbf{2. Уравнения, не содержащие переменную $x$ явно}
+
+Рассмотрим уравнение вида:
+\[
+F\left(y, y', \ldots, y^{(n)}\right) = 0.
+\]
+
+Метод решения: вводится замена
+\[
+y' = p(y).
+\]
+
+Тогда производные выражаются через $p$ как функцию от $y$:
+\[
+y'' = \frac{dp}{dy}\cdot y' = p'(y)p,
+\]
+и далее:
+\[
+y^{(n)} = \text{выражение через } p,\ p',\ \ldots,\ p^{(n-1)}.
+\]
+
+После такой замены порядок уравнения понижается на единицу.
+
+\textbf{3. Уравнения, не содержащие функцию $y$ в явном виде}
+
+Рассмотрим уравнение вида:
+\[
+F\left(x, y', \ldots, y^{(n)}\right) = 0.
+\]
+
+Метод решения: вводится замена
+\[
+y' = p(x).
+\]
+
+Тогда
+\[
+y'' = p'(x),
+\]
+\[
+y''' = p''(x),
+\]
+\[
+\ldots
+\]
+\[
+y^{(n)} = p^{(n-1)}(x).
+\]
+
+В результате исходное уравнение принимает вид:
+\[
+F\left(x, p, p', \ldots, p^{(n-1)}\right) = 0.
+\]
+
+То есть порядок уравнения понижается на единицу. После нахождения функции $p(x)$ решение $y(x)$ находится интегрированием:
+\[
+y = \int p(x)\,dx.
+\]
+\end{answerbox}
+
+\end{document}
